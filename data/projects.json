@@ -1,0 +1,26 @@
+[
+  {
+    "id": "project_1",
+    "image": "images/singapore.jpg",
+    "title": "Singapore HDB Resale Flat Prices (2017-2024)",
+    "description": "This project analyzes Singapore HDB resale prices (Jan 2017–Jun 2024), using data analysis and machine learning to uncover trends, key factors, and build predictive models for future prices."
+  },
+  {
+    "id": "project_2",
+    "image": "images/ai_ml_jobs.png",
+    "title": "AI and ML Job Listings in the USA (2022-2024)",
+    "description": "Analysis of AI/ML job trends in the USA (2022–2024), covering trends, skills gaps, demand forecasting, top sectors, and recommendations for job seekers and employers."
+  },
+  {
+    "id": "project_3",
+    "image": "images/sales.jpg",
+    "title": "Store Sales",
+    "description": "Sales Data Analysis of a Global Superstore (2014–2018): Trends, top-performing products, customer insights, geographical distribution, and shipping preferences to enhance business strategies and drive growth."
+  },
+  {
+    "id": "project_4",
+    "image": "images/cv.webp",
+    "title": "Computer Vision",
+    "description": "Object Detection for License Plate Recognition: A computer vision project utilizing YOLO to detect and localize license plates in images or videos for automated processing and analysis."
+  }
+]

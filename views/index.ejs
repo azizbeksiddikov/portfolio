@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Azizbek Siddikov - Portfolio</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div class="portfolio-container">
+      <!-- Left Navigation Menu -->
+      <nav class="left-menu">
+        <div class="menu-items">
+          <a href="#home" data-section="home" class="menu-item active">Home</a>
+          <a href="#experience" data-section="experience" class="menu-item"
+            >Work Experience</a
+          >
+          <a href="#projects" data-section="projects" class="menu-item"
+            >Projects</a
+          >
+          <a href="#contacts" data-section="contacts" class="menu-item"
+            >Contacts</a
+          >
+        </div>
+      </nav>
+
+      <!-- Main Content Area -->
+      <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+          <div class="home-content">
+            <div class="home-left">
+              <h1>AI and Data Engineer</h1>
+              <h2>Azizbek Siddikov</h2>
+              <div class="about-section">
+                <p>
+                  I am an AI and Data Engineer with expertise in computer
+                  vision, data processing, and team leadership. I am passionate
+                  about solving complex problems using Python and building
+                  data-driven solutions that make a difference.
+                </p>
+              </div>
+              <div class="home-buttons">
+                <a href="#contacts" class="contact-btn">Contact Me</a>
+
+                <a href="/Resume.pdf" download class="download-resume-btn"
+                  >Download Resume</a
+                >
+              </div>
+            </div>
+            <div class="home-right">
+              <img src="images/my_photo.jpeg" alt="Azizbek Siddikov" />
+            </div>
+          </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="experience" class="section">
+          <div class="work-content">
+            <h2>Work Experience</h2>
+            <div class="experience-card">
+              <img
+                src="images/sistech.jpeg"
+                alt="SISTECH CO., LTD. Logo"
+                class="company-logo"
+              />
+              <h3>SISTECH CO., LTD. - JUNIOR DATA ANALYST</h3>
+              <h4>Seoul | March 2023 - August 2024</h4>
+              <ul>
+                <li>
+                  Utilized Python for data manipulation and YOLOv8 modeling to
+                  detect road anomalies for autonomous inspection systems.
+                </li>
+                <li>
+                  Trained on a custom-labeled dataset of 120,000+ images,
+                  achieving high accuracy and scalability in road anomaly
+                  detection.
+                </li>
+                <li>
+                  Led a team of three data labelers, enhancing productivity and
+                  ensuring annotation accuracy.
+                </li>
+                <li>
+                  Managed extensive datasets and delivered key insights and
+                  progress reports.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+          <div class="projects-carousel">
+            <div class="project-navigation">
+              <button class="nav-btn nav-left">&lt;</button>
+              <div class="projects-container">
+                <% projects.forEach((project, index) => { %>
+                <div class="project-card" data-index="<%= index %>">
+                  <img src="<%= project.image %>" alt="<%= project.title %>" />
+                  <div class="project-details">
+                    <h3><%= project.title %></h3>
+                    <% if (index === 1) { %>
+                    <p><%= project.description %></p>
+                    <a href="#" class="project-link">More Details</a>
+                    <% } %>
+                  </div>
+                </div>
+                <% }); %>
+              </div>
+              <button class="nav-btn nav-right">&gt;</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contacts Section -->
+        <section id="contacts" class="section">
+          <div class="contacts-content">
+            <!-- Social Links -->
+            <div class="social-links">
+              <a
+                href="https://github.com/azizbeksiddikov"
+                class="social-icon"
+                target="_blank"
+              >
+                <img class="icon_image" src="/images/github.jpg" alt="GitHub" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/azzd/"
+                class="social-icon"
+                target="_blank"
+              >
+                <img
+                  class="icon_image"
+                  src="/images/linkedin.png"
+                  alt="LinkedIn"
+                />
+              </a>
+              <a href="mailto:azbeksid@gmail.com" class="social-icon">
+                <img class="icon_image" src="/images/email.jpg" alt="Email" />
+              </a>
+            </div>
+
+            <form id="contact-form" class="contact-form">
+              <input type="text" name="name" placeholder="Your Name" required />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+              />
+              <textarea
+                name="message"
+                placeholder="Your Message"
+                required
+              ></textarea>
+              <button type="submit">Send Message</button>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/js/main.js"></script>
+
+    <!-- <script>
+      // Function to refresh the page every second
+      function refreshPage() {
+        location.reload();
+      }
+
+      // Refresh the page every second (1000 milliseconds)
+      setInterval(refreshPage, 2000);
+    </script> -->
+  </body>
+</html>
