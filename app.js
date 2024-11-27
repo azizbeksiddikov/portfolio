@@ -20,6 +20,7 @@ app.set("view engine", "ejs");
 
 // Read projects data
 const projects = JSON.parse(fs.readFileSync("./data/projects.json", "utf8"));
+// console.log(projects);
 
 // Routes
 app.get("/", (req, res) => {
