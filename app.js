@@ -1,17 +1,27 @@
+console.log("Web Serverni boshlash");
 const express = require("express");
+const app = express();
 const fs = require("fs");
+const livereload = require("livereload");
+const res = require("express/lib/response");
 const path = require("path");
 const nodemailer = require("nodemailer");
 
-const app = express();
+app.use(express.static("public"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.set("views", "views");
+app.set("view engine", "ejs");
 
 // Read projects data
 const projects = JSON.parse(fs.readFileSync("./data/projects.json", "utf8"));
-
+console.log(projects);
 // Routes
 app.get("/", (req, res) => {
   res.render("index", {
     projects: projects,
+    projectsLength: projects.length, // Pass length as a separate variable
     activeSection: "home",
   });
 });
