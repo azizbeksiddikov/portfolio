@@ -1,4 +1,5 @@
-console.log("Web Serverni boshlash");
+require("dotenv").config();
+console.log("worked");
 const express = require("express");
 const app = express();
 const fs = require("fs");
@@ -10,6 +11,9 @@ const nodemailer = require("nodemailer");
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// Retrieve sensitive information from environment variables
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 app.set("views", "views");
 app.set("view engine", "ejs");
