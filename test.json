@@ -1,0 +1,129 @@
+{
+  "ok": true,
+  "result": [
+    {
+      "update_id": 106855619,
+      "my_chat_member": {
+        "chat": {
+          "id": -4546433095,
+          "title": "Azizbek & portfolio_bot",
+          "type": "group",
+          "all_members_are_administrators": true
+        },
+        "from": {
+          "id": 337067314,
+          "is_bot": false,
+          "first_name": "Azizbek",
+          "username": "siddikov_a",
+          "language_code": "en"
+        },
+        "date": 1732695741,
+        "old_chat_member": {
+          "user": {
+            "id": 7632948677,
+            "is_bot": true,
+            "first_name": "portfolio_bot",
+            "username": "andrew_portfolio_bot"
+          },
+          "status": "left"
+        },
+        "new_chat_member": {
+          "user": {
+            "id": 7632948677,
+            "is_bot": true,
+            "first_name": "portfolio_bot",
+            "username": "andrew_portfolio_bot"
+          },
+          "status": "member"
+        }
+      }
+    },
+    {
+      "update_id": 106855620,
+      "message": {
+        "message_id": 4,
+        "from": {
+          "id": 337067314,
+          "is_bot": false,
+          "first_name": "Azizbek",
+          "username": "siddikov_a",
+          "language_code": "en"
+        },
+        "chat": {
+          "id": -4546433095,
+          "title": "Azizbek & portfolio_bot",
+          "type": "group",
+          "all_members_are_administrators": true
+        },
+        "date": 1732695741,
+        "group_chat_created": true
+      }
+    },
+    {
+      "update_id": 106855621,
+      "message": {
+        "message_id": 5,
+        "from": {
+          "id": 337067314,
+          "is_bot": false,
+          "first_name": "Azizbek",
+          "username": "siddikov_a",
+          "language_code": "en"
+        },
+        "chat": {
+          "id": -4546433095,
+          "title": "Azizbek & portfolio_bot",
+          "type": "group",
+          "all_members_are_administrators": true
+        },
+        "date": 1732695751,
+        "text": "/start",
+        "entities": [{ "offset": 0, "length": 6, "type": "bot_command" }]
+      }
+    },
+    {
+      "update_id": 106855622,
+      "message": {
+        "message_id": 6,
+        "from": {
+          "id": 337067314,
+          "is_bot": false,
+          "first_name": "Azizbek",
+          "username": "siddikov_a",
+          "language_code": "en"
+        },
+        "chat": {
+          "id": 337067314,
+          "first_name": "Azizbek",
+          "username": "siddikov_a",
+          "type": "private"
+        },
+        "date": 1732696041,
+        "text": "/start",
+        "entities": [{ "offset": 0, "length": 6, "type": "bot_command" }]
+      }
+    },
+    {
+      "update_id": 106855623,
+      "message": {
+        "message_id": 7,
+        "from": {
+          "id": 337067314,
+          "is_bot": false,
+          "first_name": "Azizbek",
+          "username": "siddikov_a",
+          "language_code": "en"
+        },
+        "chat": {
+          "id": -4546433095,
+          "title": "Azizbek & portfolio_bot",
+          "type": "group",
+          "all_members_are_administrators": true
+        },
+        "date": 1732696051,
+        "text": "/start",
+        "entities": [{ "offset": 0, "length": 6, "type": "bot_command" }]
+      }
+    }
+  ]
+}
