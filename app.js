@@ -2,7 +2,6 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
-const fs = require("fs");
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -16,15 +15,10 @@ app.set("views", "views");
 app.set("view engine", "ejs");
 
 // Read projects data
-const projects = JSON.parse(fs.readFileSync("./data/projects.json", "utf8"));
 
 // Routes
 app.get("/", (req, res) => {
-  res.render("index", {
-    projects,
-    projectsLength: projects.length,
-    activeSection: "home",
-  });
+  res.render("index", { activeSection: "home" });
 });
 
 // Contact form submission
@@ -54,4 +48,6 @@ app.post("/send-message", async (req, res) => {
   }
 });
 
+// app.use("/.netlify/functions/api", router);
+// module.exports.handler = serverless(app);
 module.exports = app;
