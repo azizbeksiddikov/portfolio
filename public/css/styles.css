@@ -409,11 +409,19 @@ section.active {
   animation: fadeIn 0.5s ease forwards;
 }
 
-/* .project-container {
-  display: flex;
+.project-container.active {
+  display: flex !important;
+}
+
+.project-container {
   min-height: 100vh;
-  margin: 0 auto;
-} */
+  flex-direction: column;
+  justify-content: center;
+}
+
+.work--lockup {
+  position: relative;
+}
 
 .work--lockup .slider {
   position: relative;
