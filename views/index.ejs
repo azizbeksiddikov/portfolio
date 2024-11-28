@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Azizbek Siddikov - Portfolio</title>
     <link rel="stylesheet" href="/css/styles.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" /> -->
   </head>
   <body>
     <div class="portfolio-container">
@@ -44,7 +42,6 @@
               </div>
               <div class="home-buttons">
                 <a href="#contacts" class="contact-btn">Contact Me</a>
-
                 <a href="/Resume.pdf" download class="download-resume-btn"
                   >Download Resume</a
                 >
@@ -97,43 +94,31 @@
           <div class="project-slider work--lockup">
             <ul class="slider"></ul>
             <div class="slider--prev">
+              <!-- SVG for previous arrow -->
               <svg
                 version="1.1"
-                id="Layer_1"
                 xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                x="0px"
-                y="0px"
                 viewBox="0 0 150 118"
-                style="enable-background: new 0 0 150 118"
                 xml:space="preserve"
               >
-                <g
-                  transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)"
-                >
+                <g transform="translate(0,118) scale(0.1,-0.1)">
                   <path
                     d="M561,1169C525,1155,10,640,3,612c-3-13,1-36,8-52c8-15,134-145,281-289C527,41,562,10,590,10c22,0,41,9,61,29
-                c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180
-                c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z"
+                    c55,55,49,64-163,278L296,510h575c564,0,576,0,597,20c46,43,37,109-18,137c-19,10-159,13-590,13l-565,1l182,180
+                    c101,99,187,188,193,199c16,30,12,57-12,84C631,1174,595,1183,561,1169z"
                   />
                 </g>
               </svg>
             </div>
             <div class="slider--next">
+              <!-- SVG for next arrow -->
               <svg
                 version="1.1"
-                id="Layer_1"
                 xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                x="0px"
-                y="0px"
                 viewBox="0 0 150 118"
-                style="enable-background: new 0 0 150 118"
                 xml:space="preserve"
               >
-                <g
-                  transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)"
-                >
+                <g transform="translate(0,118) scale(0.1,-0.1)">
                   <path
                     d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"
                   />
@@ -141,54 +126,6 @@
               </svg>
             </div>
           </div>
-
-          <!-- <div class="center slider">
-            <div class="item">
-              <img
-                src="<%= projects[0].image %>"
-                alt="<%= projects[0].title %>"
-              />
-              <h3><%= projects[0].title %></h3>
-              <p><%= projects[0].description %></p>
-              <a href="<%= projects[0].link %>">View Project</a>
-            </div>
-            <div class="item">
-              <img
-                src="<%= projects[1].image %>"
-                alt="<%= projects[1].title %>"
-              />
-              <h3><%= projects[1].title %></h3>
-              <p><%= projects[1].description %></p>
-              <a href="<%= projects[1].link %>">View Project</a>
-            </div>
-            <div class="item">
-              <img
-                src="<%= projects[2].image %>"
-                alt="<%= projects[2].title %>"
-              />
-              <h3><%= projects[2].title %></h3>
-              <p><%= projects[2].description %></p>
-              <a href="<%= projects[2].link %>">View Project</a>
-            </div>
-            <div class="item">
-              <img
-                src="<%= projects[3].image %>"
-                alt="<%= projects[3].title %>"
-              />
-              <h3><%= projects[3].title %></h3>
-              <p><%= projects[3].description %></p>
-              <a href="<%= projects[3].link %>">View Project</a>
-            </div>
-            <div class="item">
-              <img
-                src="<%= projects[4].image %>"
-                alt="<%= projects[4].title %>"
-              />
-              <h3><%= projects[4].title %></h3>
-              <p><%= projects[4].description %></p>
-              <a href="<%= projects[4].link %>">View Project</a>
-            </div>
-          </div> -->
         </section>
 
         <!-- Contacts Section -->
@@ -246,51 +183,11 @@
         </section>
       </main>
     </div>
-    <!-- <script>
-      // Function to refresh the page every second
-      function refreshPage() {
-        location.reload();
-      }
 
-      // Refresh the page every second (1000 milliseconds)
-      setInterval(refreshPage, 2000);
-    </script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- <script type="text/javascript" src="slick/slick.min.js"></script> -->
-    <script src="/js/main.js"></script>
     <script>
       const projects = <%- JSON.stringify(projects) %>;
     </script>
-    <!-- <script>
-      $(document).ready(function () {
-        $(".center").slick({
-          centerMode: true,
-          centerPadding: "60px",
-          slidesToShow: 3,
-          prevArrow: $("#prev-btn"),
-          nextArrow: $("#next-btn"),
-          responsive: [
-            {
-              breakpoint: 768,
-              settings: {
-                arrows: false,
-                centerMode: true,
-                centerPadding: "40px",
-                slidesToShow: 3,
-              },
-            },
-            {
-              breakpoint: 480,
-              settings: {
-                arrows: false,
-                centerMode: true,
-                centerPadding: "40px",
-                slidesToShow: 1,
-              },
-            },
-          ],
-        });
-      });
-    </script> -->
+    <script src="/js/main.js"></script>
   </body>
 </html>

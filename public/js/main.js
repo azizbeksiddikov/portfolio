@@ -6,33 +6,37 @@ document.addEventListener("DOMContentLoaded", () => {
   menuItems.forEach((item) => {
     item.addEventListener("click", (e) => {
       e.preventDefault();
-      const targetSection = e.target.getAttribute("data-section");
+      const targetSection = item.getAttribute("data-section");
 
       // Remove active classes
-      menuItems.forEach((mi) => mi.classList.remove("active"));
-      sections.forEach((section) => section.classList.remove("active"));
+      document.querySelector(".menu-item.active")?.classList.remove("active");
+      document.querySelector(".section.active")?.classList.remove("active");
 
       // Add active classes to selected section
-      e.target.classList.add("active");
+      item.classList.add("active");
       document.getElementById(targetSection).classList.add("active");
     });
   });
 
   // Home/button => Contacts
-  document.querySelector(".contact-btn").addEventListener("click", (e) => {
-    e.preventDefault(); // Prevents the default action of navigating to the "contacts" section
+  const contactBtn = document.querySelector(".contact-btn");
+  contactBtn.addEventListener("click", (e) => {
+    e.preventDefault();
 
-    const targetSection = "contacts"; // The target section is hardcoded to "contacts" based on the href
+    const targetSection = "contacts";
 
     // Remove active classes
-    menuItems.forEach((mi) => mi.classList.remove("active"));
-    sections.forEach((section) => section.classList.remove("active"));
+    document.querySelector(".menu-item.active")?.classList.remove("active");
+    document.querySelector(".section.active")?.classList.remove("active");
 
     // Add active class to the "contacts" section
-    e.target.classList.add("active");
+    document
+      .querySelector('.menu-item[data-section="contacts"]')
+      .classList.add("active");
     document.getElementById(targetSection).classList.add("active");
   });
 
+  // Slider Initialization
   const sliderContainer = document.querySelector(".slider");
   projects.forEach((project, index) => {
     const projectElement = document.createElement("li");
@@ -48,13 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     projectElement.innerHTML = `
-    <a href=${project.link} target="_blank">
+      <a href="${project.link}" target="_blank">
         <div class="slider--item-image">
           <img src="${project.image}" alt="${project.title}">
         </div>
         <p class="slider--item-title">${project.title}</p>
         <p class="slider--item-description">
-        ${project.description}
+          ${project.description}
         </p>
       </a>
     `;
@@ -62,15 +66,16 @@ document.addEventListener("DOMContentLoaded", () => {
     sliderContainer.appendChild(projectElement);
   });
 
+  // Slider Navigation
+  const slider = document.querySelector(".slider");
+  const sliderChildren = Array.from(slider.children);
+  const totalItems = sliderChildren.length;
   const prevNextButtons = document.querySelectorAll(
     ".slider--prev, .slider--next"
   );
+
   prevNextButtons.forEach((button) => {
     button.addEventListener("click", function () {
-      const slider = document.querySelector(".slider");
-      const sliderChildren = Array.from(slider.children);
-      const totalItems = sliderChildren.length;
-
       const leftItem = slider.querySelector(".slider--item-left");
       const centerItem = slider.querySelector(".slider--item-center");
       const rightItem = slider.querySelector(".slider--item-right");
@@ -80,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const rightIndex = sliderChildren.indexOf(rightItem);
 
       // Fade out
-      slider.style.opacity = "0";
+      slider.classList.add("fade-out");
 
       setTimeout(() => {
         let newLeftIndex, newCenterIndex, newRightIndex;
@@ -108,44 +113,42 @@ document.addEventListener("DOMContentLoaded", () => {
         sliderChildren[newRightIndex].classList.add("slider--item-right");
 
         // Fade in
-        slider.style.opacity = "1";
+        slider.classList.remove("fade-out");
       }, 400);
     });
   });
 
-  document
-    .getElementById("contact-form")
-    .addEventListener("submit", async function (event) {
-      event.preventDefault(); // Prevent the default form submission
+  // Contact Form Submission
+  const contactForm = document.getElementById("contact-form");
+  contactForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
 
-      // Collect form data
-      const name = event.target.name.value;
-      const email = event.target.email.value;
-      const message = event.target.message.value;
-      // Create an object with the form data
-      const data = { name, email, message };
+    // Collect form data
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData.entries());
 
-      // Send the form data to the server as JSON
-      try {
-        let response = await fetch("/send-message", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json", // Tell the server we're sending JSON
-          },
-          body: JSON.stringify(data), // Convert the data to JSON
-        });
+    // Send the form data to the server as JSON
+    try {
+      const response = await fetch("/send-message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-        const result = await response.json();
-        console.log("Server response:", result);
+      const result = await response.json();
+      console.log("Server response:", result);
 
-        if (result.status === "success") {
-          alert("Your message has been sent successfully!");
-        } else {
-          alert("There was an error sending your message.");
-        }
-      } catch (error) {
-        console.error("Error sending message:", error);
+      if (result.status === "success") {
+        alert("Your message has been sent successfully!");
+        contactForm.reset();
+      } else {
         alert("There was an error sending your message.");
       }
-    });
+    } catch (error) {
+      console.error("Error sending message:", error);
+      alert("There was an error sending your message.");
+    }
+  });
 });
