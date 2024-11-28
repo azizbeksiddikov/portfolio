@@ -72,59 +72,84 @@ document.addEventListener("DOMContentLoaded", () => {
   //   },
   // ];
 
-  const sliderContainer = document.querySelector(".center.slider");
+  const sliderContainer = document.querySelector(".slider");
 
-  // projects.forEach((project) => {
-  //   const projectElement = document.createElement("div");
-  //   projectElement.classList.add("item");
-  //   projectElement.innerHTML = `
-  //         <img src="${project.image}" alt="${project.title}">
-  //         <h3>${project.title}</h3>
-  //         <p>${project.description}</p>
-  //         <a href="${project.link}" class="project-link">View Project</a>
-  //     `;
-  //   sliderContainer.appendChild(projectElement);
-  // });
-  projects.forEach((project) => {
-    const projectElement = document.createElement("div");
-    projectElement.classList.add("item");
+  projects.forEach((project, index) => {
+    const projectElement = document.createElement("li");
+    projectElement.classList.add("slider--item");
+
+    // Add specific classes to the first three items
+    if (index === 0) {
+      projectElement.classList.add("slider--item-left");
+    } else if (index === 1) {
+      projectElement.classList.add("slider--item-center");
+    } else if (index === 2) {
+      projectElement.classList.add("slider--item-right");
+    }
+
     projectElement.innerHTML = `
-      <img src="${project.image}" alt="${project.title}">
-      <h3>${project.title}</h3>
-      <p>${project.description}</p>
-      <a href="${project.link}" class="project-link" target="_blank">View Project</a>
+    <a href=${project.link} target="_blank">
+        <div class="slider--item-image">
+          <img src="${project.image}" alt="${project.title}">
+        </div>
+        <p class="slider--item-title">${project.title}</p>
+        <p class="slider--item-description">
+        ${project.description}
+        </p>
+      </a>
     `;
+
     sliderContainer.appendChild(projectElement);
   });
 
-  // Initialize Slick slider if jQuery and Slick are available
-  if (window.$ && $.fn.slick) {
-    $(".center").slick({
-      centerMode: true,
-      centerPadding: "60px",
-      slidesToShow: 3,
-      prevArrow: $(".slider-prev"),
-      nextArrow: $(".slider-next"),
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: "40px",
-            slidesToShow: 1,
-          },
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            arrows: false,
-            centerMode: true,
-            centerPadding: "40px",
-            slidesToShow: 1,
-          },
-        },
-      ],
+  const prevNextButtons = document.querySelectorAll(
+    ".slider--prev, .slider--next"
+  );
+  prevNextButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const slider = document.querySelector(".slider");
+      const sliderChildren = Array.from(slider.children);
+      const totalItems = sliderChildren.length;
+
+      const leftItem = slider.querySelector(".slider--item-left");
+      const centerItem = slider.querySelector(".slider--item-center");
+      const rightItem = slider.querySelector(".slider--item-right");
+
+      const leftIndex = sliderChildren.indexOf(leftItem);
+      const centerIndex = sliderChildren.indexOf(centerItem);
+      const rightIndex = sliderChildren.indexOf(rightItem);
+
+      // Fade out
+      slider.style.opacity = "0";
+
+      setTimeout(() => {
+        let newLeftIndex, newCenterIndex, newRightIndex;
+
+        if (this.classList.contains("slider--next")) {
+          // Next button clicked
+          newLeftIndex = (leftIndex + 1) % totalItems;
+          newCenterIndex = (centerIndex + 1) % totalItems;
+          newRightIndex = (rightIndex + 1) % totalItems;
+        } else {
+          // Prev button clicked
+          newLeftIndex = (leftIndex - 1 + totalItems) % totalItems;
+          newCenterIndex = (centerIndex - 1 + totalItems) % totalItems;
+          newRightIndex = (rightIndex - 1 + totalItems) % totalItems;
+        }
+
+        // Remove old classes
+        leftItem.classList.remove("slider--item-left");
+        centerItem.classList.remove("slider--item-center");
+        rightItem.classList.remove("slider--item-right");
+
+        // Add new classes
+        sliderChildren[newLeftIndex].classList.add("slider--item-left");
+        sliderChildren[newCenterIndex].classList.add("slider--item-center");
+        sliderChildren[newRightIndex].classList.add("slider--item-right");
+
+        // Fade in
+        slider.style.opacity = "1";
+      }, 400);
     });
-  }
+  });
 });

@@ -23,6 +23,7 @@ const projects = JSON.parse(fs.readFileSync("./data/projects.json", "utf8"));
 // console.log(projects);
 
 // Routes
+
 app.get("/", (req, res) => {
   res.render("index", {
     projects: projects,
