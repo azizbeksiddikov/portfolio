@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 const path = require("path");
 const express = require("express");
 const app = express();
+const port = process.env.PORT || 10000;
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
@@ -52,4 +53,7 @@ app.post("/send-message", async (req, res) => {
 
 // app.use("/.netlify/functions/api", router);
 // module.exports.handler = serverless(app);
-module.exports = app;
+// module.exports = app;
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
