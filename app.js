@@ -7,13 +7,15 @@ const livereload = require("livereload");
 const res = require("express/lib/response");
 const path = require("path");
 const nodemailer = require("nodemailer");
+// const fetch = require("node-fetch");
 
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 // Retrieve sensitive information from environment variables
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+let TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN.replace(/["';]/g, "");
+let TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID.replace(/["';]/g, "");
 
 app.set("views", "views");
 app.set("view engine", "ejs");
@@ -33,32 +35,33 @@ app.get("/", (req, res) => {
 });
 
 // Contact form submission
-app.post("/send-email", (req, res) => {
+app.post("/send-message", async (req, res) => {
   const { name, email, message } = req.body;
+  const content = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
 
-  // Configure nodemailer (you'll need to replace with your actual email credentials)
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: "your-email@gmail.com",
-      pass: "your-email-password",
-    },
-  });
+  try {
+    let response = await fetch(
+      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: content,
+        }),
+      }
+    );
 
-  const mailOptions = {
-    from: email,
-    to: "azbeksid@gmail.com",
-    subject: `Portfolio Contact from ${name}`,
-    text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-  };
+    const telegramData = await response.json();
+    console.log("Telegram message sent", telegramData);
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error);
-      return res.status(500).send("Error sending email");
-    }
-    res.status(200).send("Email sent successfully");
-  });
+    res.json({ status: "success", data: telegramData });
+  } catch (error) {
+    console.error("Error sending message:", error);
+    res.status(500).json({ status: "error", message: error.message });
+  }
 });
 
 module.exports = app;

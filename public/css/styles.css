@@ -99,6 +99,7 @@ body {
 .menu-item.active {
   background-color: var(--accent-color);
   transform: scale(1.05);
+  border-radius: 999px;
 }
 
 /* Main Content Area */
@@ -195,10 +196,12 @@ body {
   text-align: center;
 }
 
-.work-content h2 {
+.work-content h2,
+.project-container h2 {
   margin-bottom: 50px;
   font-size: 2.5em;
   color: var(--primary-color);
+  text-align: center;
 }
 
 .experience-card {
@@ -234,7 +237,7 @@ body {
 
 .experience-card h4 {
   margin-bottom: 20px;
-  color: var(--secondary-color);
+  color: var(--accent-color);
 }
 
 /* Projects Section */
@@ -321,7 +324,7 @@ body {
   background-color: var(--accent-color);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 999px;
   cursor: pointer;
   font-size: 1.1rem; /* Slightly larger button text */
   transition: background-color var(--transition-speed) ease;
@@ -451,7 +454,7 @@ section.active {
   font-size: 12px;
   font-weight: 700;
   width: 150px;
-  text-transform: lowercase;
+  text-transform: capitalize;
 }
 
 .work--lockup .slider--item-description {

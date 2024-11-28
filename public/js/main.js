@@ -33,47 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById(targetSection).classList.add("active");
   });
 
-  // // Slick Slider Initialization
-  // const projects = [
-  //   {
-  //     title: "Singapore HDB Resale Flat Prices (2017-2024)",
-  //     description:
-  //       "This project analyzes Singapore HDB resale prices (Jan 2017–Jun 2024), using data analysis and machine learning to uncover trends, key factors, and build predictive models for future prices.",
-  //     image: "images/singapore.jpg",
-  //     link: "https://github.com/azizbeksiddikov/Analysis_and_Prediction_Singapore_HDB_Resale_Flat_Price/tree/main",
-  //   },
-  //   {
-  //     title: "AI and ML Job Listings in the USA (2022-2024)",
-  //     description:
-  //       "Analysis of AI/ML job trends in the USA (2022–2024), covering trends, skills gaps, demand forecasting, top sectors, and recommendations for job seekers and employers.",
-  //     image: "images/ai_ml_jobs.png",
-  //     link: "https://github.com/azizbeksiddikov/AI_ML_Job_Listings",
-  //   },
-  //   {
-  //     title: "Store Sales",
-  //     description:
-  //       "Sales Data Analysis of a Global Superstore (2014–2018): Trends, top-performing products, customer insights, geographical distribution, and shipping preferences to enhance business strategies and drive growth.",
-  //     image: "images/sales.jpg",
-  //     link: "https://github.com/azizbeksiddikov/Sales_Data_analysis",
-  //   },
-  //   {
-  //     title: "Computer Vision",
-  //     description:
-  //       "Object Detection for License Plate Recognition: A computer vision project utilizing YOLO to detect and localize license plates in images or videos for automated processing and analysis.",
-  //     image: "images/cv.webp",
-  //     link: "https://github.com/azizbeksiddikov/Machine-Learning-Specialization",
-  //   },
-  //   {
-  //     title: "Murder Mystery",
-  //     description:
-  //       "Object Detection for License Plate Recognition: A computer vision project utilizing YOLO to detect and localize license plates in images or videos for automated processing and analysis.",
-  //     image: "images/murder.jpg",
-  //     link: "https://github.com/azizbeksiddikov/SQL_Murder_Mystery/tree/main",
-  //   },
-  // ];
-
   const sliderContainer = document.querySelector(".slider");
-
   projects.forEach((project, index) => {
     const projectElement = document.createElement("li");
     projectElement.classList.add("slider--item");
@@ -152,4 +112,40 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 400);
     });
   });
+
+  document
+    .getElementById("contact-form")
+    .addEventListener("submit", async function (event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      // Collect form data
+      const name = event.target.name.value;
+      const email = event.target.email.value;
+      const message = event.target.message.value;
+      // Create an object with the form data
+      const data = { name, email, message };
+
+      // Send the form data to the server as JSON
+      try {
+        let response = await fetch("/send-message", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json", // Tell the server we're sending JSON
+          },
+          body: JSON.stringify(data), // Convert the data to JSON
+        });
+
+        const result = await response.json();
+        console.log("Server response:", result);
+
+        if (result.status === "success") {
+          alert("Your message has been sent successfully!");
+        } else {
+          alert("There was an error sending your message.");
+        }
+      } catch (error) {
+        console.error("Error sending message:", error);
+        alert("There was an error sending your message.");
+      }
+    });
 });
