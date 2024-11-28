@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "build": "npm run build:functions",
-    "build:functions": "cp -R netlify/functions/* netlify/functions/ && npm install --prefix netlify/functions/",
+    "build": "echo 'Build step executed'",
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
@@ -22,7 +21,6 @@
     "jQuery": "^1.7.4",
     "livereload": "^0.9.3",
     "netlify-cli": "^17.37.2",
-    "netlify-lambda": "^2.0.16",
     "nodemailer": "^6.9.16",
     "nodemon": "^3.1.7",
     "serverless-http": "^3.2.0"
