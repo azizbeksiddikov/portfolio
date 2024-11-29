@@ -40,14 +40,30 @@ document.addEventListener("DOMContentLoaded", () => {
   projects = [
     {
       id: 1,
+      image: "images/tensor.jpeg",
+      title: "Handwritten Digit Classification with TensorFlow",
+      description:
+        "This project demonstrates the classification of handwritten digits from the MNIST dataset using a Convolutional Neural Network (CNN) built with TensorFlow. The MNIST dataset consists of grayscale images of digits (0-9), each sized 28x28 pixels.",
+      link: "https://github.com/azizbeksiddikov/Handwritten-Digit-Classification-with-TensorFlow",
+    },
+    {
+      id: 2,
+      image: "images/YOLO.svg",
+      title: "Open Images vs COCO",
+      description:
+        "This project compares YOLO pretrained models on Open Images and COCO datasets, analyzing object detection performance qualitatively on images and videos",
+      link: "https://github.com/azizbeksiddikov/Open-Images-vs-COCO",
+    },
+    {
+      id: 3,
       image: "images/singapore.jpg",
       title: "Singapore HDB Resale Flat Prices (2017-2024)",
       description:
         "This project analyzes Singapore HDB resale prices (Jan 2017–Jun 2024), using data analysis and machine learning to uncover trends, key factors, and build predictive models for future prices.",
-      link: "https://github.com/azizbeksiddikov/Analysis_and_Prediction_Singapore_HDB_Resale_Flat_Price/tree/main",
+      link: "https://github.com/azizbeksiddikov/Analysis_and_Prediction_Singapore_HDB_Resale_Flat_Price",
     },
     {
-      id: 2,
+      id: 4,
       image: "images/ai_ml_jobs.png",
       title: "AI and ML Job Listings in the USA (2022-2024)",
       description:
@@ -55,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
       link: "https://github.com/azizbeksiddikov/AI_ML_Job_Listings",
     },
     {
-      id: 3,
+      id: 5,
       image: "images/sales.jpg",
       title: "Store Sales",
       description:
@@ -63,20 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
       link: "https://github.com/azizbeksiddikov/Sales_Data_analysis",
     },
     {
-      id: 4,
-      image: "images/cv.webp",
-      title: "Computer Vision",
-      description:
-        "Object Detection for License Plate Recognition: A computer vision project utilizing YOLO to detect and localize license plates in images or videos for automated processing and analysis.",
-      link: "https://github.com/azizbeksiddikov/Machine-Learning-Specialization",
-    },
-    {
-      id: 5,
+      id: 6,
       image: "images/murder.jpg",
       title: "Murder Mystery",
       description:
         "Object Detection for License Plate Recognition: A computer vision project utilizing YOLO to detect and localize license plates in images or videos for automated processing and analysis.",
-      link: "https://github.com/azizbeksiddikov/SQL_Murder_Mystery/tree/main",
+      link: "https://github.com/azizbeksiddikov/SQL_Murder_Mystery/",
     },
   ];
 
